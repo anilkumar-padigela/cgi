@@ -6,6 +6,7 @@ package com.png.cgi.services;
 import java.util.List;
 
 import com.png.cgi.model.Location;
+import com.png.cgi.model.Store;
 
 /**
  * @author anil.padigela
@@ -13,6 +14,6 @@ import com.png.cgi.model.Location;
  */
 public interface ILocationService {
 
-	public List<Location> getLocation();
+	public List<Store> getLocation(Location location);
 	
 }

@@ -11,14 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.png.cgi.model.Store;
 import com.png.cgi.model.UserDetails;
+import com.png.cgi.services.UserDetailServiceImpl;
 
 @RestController
 public class UserDetailsController {
 
 	
+
+	
+	
 	@PostMapping(value="/register")
-    public String registration(@RequestBody UserDetails user) {    
-			return "success";
+    public UserDetails registration(@RequestBody UserDetails user) {  
+		
+		UserDetailServiceImpl service = new UserDetailServiceImpl();
+		user = service.registration(user);
+			return user;
 		    }	
 
 	
