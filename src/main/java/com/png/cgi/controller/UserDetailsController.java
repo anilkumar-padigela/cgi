@@ -17,13 +17,16 @@ public class UserDetailsController {
 
 	
 	@PostMapping(value="/register")
-    public String registration(@RequestBody UserDetails user) {
-       
-		System.out.println("User Details"+user);
+    public String registration(@RequestBody UserDetails user) {    
 			return "success";
-		
-		
-		
+		    }	
+
+	
+	@PostMapping(value="/validateLogin")
+    public UserDetails validateLogin(@RequestBody UserDetails user) {      	
+			return user;		
     }	
 
+	
+	
 }
