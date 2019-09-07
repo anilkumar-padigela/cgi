@@ -29,29 +29,34 @@ public class UserDaoImpl extends AppDao{
         
         //String sql = " INSERT INTO dbo.UserRegistration values("8","kiranmai","panthangi","kiran","panthangi","kpanthanig@gmail.com"
         	
-        		
+        		String inserStatement  = "SET IDENTITY_INSERT DBO.USERREGISTRATION ON";
+        	
+		           try {
+		        		Statement statement1= this.getDao().createStatement();
+					ResultSet resultSet = statement1.executeQuery(inserStatement);
+				
         		String query = "INSERT INTO dbo.UserRegistration ("
         			    + " id,"
-        			    + " userName,password,"
+        			    + "userName,"
+        			    + "password,"
         			    + " firstName,"
         			    + " lastName,"
         			    + " email,"
         			    + " mobile,"
         			    + " location ) VALUES ("
-        			    + "null, ?, ?, ?, ?, ?, ?, ?)";
+        			    + "?,?, ?, ?, ?, ?, ?, ?)";
 
-        			  try {
         			    // set all the preparedstatement parameters
         			    PreparedStatement st = this.getDao().prepareStatement(query);
-        			    st.setInt(1, 0);
+        			    st.setInt(1, 123);
         			    st.setString(2, user.getUserName());
         			    st.setString(3, user.getPassword());
         			    st.setString(4, user.getFirstName());
-        			    st.setString(4, user.getLastName());
-        			    st.setString(5, user.getEmail());
-        			    st.setString(6, user.getMobile());
-        			    st.setString(7, user.getLocation());
-
+        			    st.setString(5, user.getLastName());
+        			    st.setString(6, user.getEmail());
+        			    st.setString(7, user.getMobile());
+        			    st.setString(8, user.getLocation());
+        			    ResultSet rs = statement1.executeQuery(inserStatement);
         			    // execute the preparedstatement insert
         			    st.executeUpdate();
         			    st.close();
